@@ -1,0 +1,26 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archives & Temporary Artifacts
+*.zip
+*.tar.gz
+*.rar
+*.log
+*.tmp
+*.bak
+
+# Node & Python artifacts (if any used)
+__pycache__/
+*.py[cod]
+*$py.class
