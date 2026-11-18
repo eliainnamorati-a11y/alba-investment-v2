@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
     <link rel="preload" href="compressed.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="jet%20deau/ezgif-frame-001.jpg" as="image">
+    <link rel="preload" href="cathedral/ezgif-frame-001.jpg" as="image">
     <title>Alba Investment Partners</title>
     
     <style>
@@ -64,7 +66,7 @@
             left: 0;
             width: 100%;
             padding: 0 60px;
-            height: 108px;
+            height: 80px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -83,7 +85,7 @@
 
         .logo {
             cursor: pointer;
-            height: 60px;
+            height: 44px;
             display: flex;
             align-items: center;
             transition: height 0.3s ease;
@@ -229,8 +231,9 @@
         }
 
         .founder-img-placeholder,
-        .intro-text,
-        .hero-stat {
+        .hero-text-phase1,
+        .hero-text-phase2,
+        .hero-cta-wrapper {
             opacity: 0;
             transform: translateY(40px);
             will-change: opacity, transform;
@@ -259,56 +262,71 @@
             flex: 1;
         }
 
+        .hero-intro-wrapper {
+            display: grid;
+            grid-template-areas: "stack";
+            align-items: start;
+            margin-bottom: 30px;
+        }
+
         .intro-text {
-            font-size: 1.6rem;
-            line-height: 1.4;
-            margin-bottom: 40px;
+            font-size: 1.32rem;
+            line-height: 1.5;
+            margin: 0;
             font-weight: 300;
             color: #ffffff;
+            max-width: 780px;
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 80px;
+        .hero-text-phase1,
+        .hero-text-phase2 {
+            grid-area: stack;
+            opacity: 0;
+            will-change: opacity, transform;
         }
 
-        .hero-stat {
-            display: flex;
+        .hero-cta-wrapper {
+            display: inline-block;
+            opacity: 0;
+            will-change: opacity, transform;
+        }
+
+        .hero-cta-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        .hero-stat::before {
-            content: '';
-            display: block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--accent);
-            border: 4px solid transparent;
-            box-shadow: 0 0 0 0.5px var(--accent); /* Hairline sub-pixel ring */
-            background-clip: padding-box;
-            box-sizing: content-box;
-        }
-
-        .stat-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-details .stat-num {
-            font-size: 1.2rem;
-            font-weight: 700;
+            gap: 14px;
             color: #ffffff;
-            margin-bottom: 2px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .stat-details .stat-label {
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.7);
-            font-family: sans-serif;
-            text-transform: uppercase;
+        .hero-cta-btn:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .hero-cta-btn .cs-btn-arrow {
+            font-size: 0.65rem;
+            color: var(--gold, #cfa85f);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta-btn:hover .cs-btn-arrow {
+            transform: translateX(4px);
         }
 
         /* Bottom Progress Bar */
@@ -513,62 +531,7 @@
 
         /* Mobile overrides moved to global master query below */
 
-        /* Scrollytelling Mission */
-        .mission-scroll-section {
-            height: 180vh; /* Dramatically faster lighting curve */
-            position: relative;
-            background-color: var(--bg-color);
-            z-index: 5;
-        }
-        
-        .mission-sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-        }
 
-        .mission-container {
-            width: 100%;
-            padding: 0 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; /* Vertically center the title to exactly match the paragraph weight */
-        }
-
-        .mission-left {
-            flex: 0 0 35%;
-        }
-
-        .mission-left h2 {
-            font-size: 3rem;
-            color: var(--text-main);
-            margin: 0;
-            font-weight: 300;
-        }
-
-        .mission-right {
-            flex: 1;
-            max-width: 800px;
-        }
-
-        #mission-text {
-            font-size: 1.7rem;
-            line-height: 1.6;
-            margin: 0;
-            color: rgba(17, 17, 17, 0.15); /* light grey base */
-            font-weight: 400;
-            will-change: transform;
-            transform: translateY(100px); /* Initial position */
-        }
-
-        .mission-word {
-            transition: color 0.1s;
-        }
-        .mission-word.active {
-            color: var(--text-main);
-        }
 
 
 
@@ -859,7 +822,7 @@
             .logo { height: 40px; }
 
             /* Hero section */
-            .hero-container { height: 250vh; } 
+            .hero-container { height: 280vh; } 
             .hero-content {
                 height: 100vh; top: 0; left: 0; width: 100%; display: block;
             }
@@ -873,9 +836,9 @@
             .secondary-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
             .secondary-left { display: none !important; }
             .founder-img-placeholder { display: none !important; }
-            .intro-text { font-size: 1.15rem; margin-bottom: 25px; text-align: left; }
-            .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: flex-start; }
-            .stat-details .stat-num { font-size: 1.1rem; }
+            .hero-intro-wrapper { margin-bottom: 20px; }
+            .intro-text { font-size: 1.02rem; margin-bottom: 0; text-align: left; line-height: 1.5; }
+            .hero-cta-btn { padding: 10px 18px; font-size: 0.78rem; letter-spacing: 2px; }
             .hero-bottom-bar { display: none; } /* Clear screen clutter on load */
 
             /* Scrollytelling Bridge */
@@ -896,11 +859,7 @@
             .step {
                 min-height: 70vh; justify-content: center; padding-bottom: 15vh; text-align: left;
             }
-            
-            /* Mission */
-            .mission-container { flex-direction: column; gap: 30px; padding-top: 80px; align-items: flex-start; }
-            .mission-left h2 { font-size: 2.2rem; text-align: left; }
-            #mission-text { font-size: 1.3rem; line-height: 1.4; text-align: left; }
+
             .normal-section { padding: 60px 8%; text-align: left; }
             .normal-section h2, .step h2 { font-size: 2.4rem; letter-spacing: -1px; }
             .section-desc { font-size: 1.1rem; margin: 0 0 30px 0; }
@@ -930,8 +889,6 @@
             .alba-footer { padding: 50px 8% 30px; }
         }
     </style>
-    <!-- Preload Hero Video for optimal performance -->
-    <link rel="preload" as="video" href="compressed.mp4" type="video/mp4">
     <style>
         /* Preloader */
         #preloader {
@@ -1078,27 +1035,15 @@
                             <div class="founder-img-placeholder"></div>
                         </div>
                         <div class="secondary-right">
-                            <p class="intro-text">Alba is an independent investment management boutique dedicated to providing superior risk-adjusted returns in fixed income and credit.</p>
-                            
-                            <div class="hero-stats">
-                                <div class="hero-stat">
-                                    <div class="stat-details">
-                                        <span style="white-space: nowrap;"><span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span></span>
-                                        <span class="stat-label">INVESTMENT EXPERIENCE</span>
-                                    </div>
-                                </div>
-                                <div class="hero-stat">
-                                    <div class="stat-details">
-                                        <span class="stat-num" data-target="1">0</span><span class="stat-suffix"></span>
-                                        <span class="stat-label">FLAGSHIP FUND</span>
-                                    </div>
-                                </div>
-                                <div class="hero-stat">
-                                    <div class="stat-details">
-                                        <span class="stat-num" data-target="2024">0</span><span class="stat-suffix"></span>
-                                        <span class="stat-label">FIRM FOUNDED</span>
-                                    </div>
-                                </div>
+                            <div class="hero-intro-wrapper">
+                                <p class="intro-text hero-text-phase1">Alba Investment Partners is a Geneva-based independent credit boutique, authorised by FINMA as a Manager of Collective Assets. Founded in 2024 by three partners whose shared conviction was forged over a decade.</p>
+                                <p class="intro-text hero-text-phase2">Today, a diverse, multigenerational team brings that same rigor &mdash; disciplined research, careful risk management &mdash; to deliver superior risk-adjusted returns for our investors.</p>
+                            </div>
+                            <div class="hero-cta-wrapper">
+                                <a href="about.html" class="hero-cta-btn">
+                                    <span>Discover our story</span>
+                                    <span class="cs-btn-arrow">&#9654;</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1114,22 +1059,8 @@
         </div>
     </div>
 
-    <!-- Scrollytelling Mission Section -->
-    <section class="mission-scroll-section" id="mission-scroll-section">
-        <div class="mission-sticky">
-            <div class="mission-container">
-                <div class="mission-left">
-                    <h2>Our Mission</h2>
-                </div>
-                <div class="mission-right">
-                    <p id="mission-text">Our mission is to generate consistent long-term performance through disciplined investing, intellectual rigor, and prudent risk management, while maintaining full alignment with our investors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Scrollytelling Section 1 (Image Left) -->
-    <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1" style="height: 350vh;">
+    <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1" style="height: 210vh;">
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
                 <canvas id="jet-deau-canvas" width="1920" height="1080" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transform: scale(1.15); transform-origin: center;"></canvas>
@@ -1139,27 +1070,42 @@
         <div class="text-column">
             <div class="step" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px;">
                 <h2>Our Approach</h2>
-                <p class="fade-up" style="font-size: 2.2rem; line-height: 1.3; max-width: 850px; text-align: left; font-family: 'Aperto', serif; margin: 30px 0; font-weight: 400; letter-spacing: -0.5px; color: #111;">
-                    Alba's investment philosophy combines a research-driven, bottom-up approach to credit selection with a top-down macro framework to manage risk.
-                </p>
-                <a href="about.html" class="cs-btn" style="color: #111; margin-top: 20px;">
-                    <span>Learn More About Us</span>
+                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.35rem; color: var(--accent); margin-bottom: 15px; font-weight: 500; max-width: 720px; text-align: left; line-height: 1.45;">Private-Equity style portfolio management meets a hedge-fund toolkit.</h3>
+                <p style="font-size: 1.15rem; line-height: 1.65; max-width: 720px; text-align: left; color: var(--text-secondary); margin: 0 0 15px 0;">Like a private-equity investor, we hold a focused portfolio and study each position in depth. We use the full toolkit (long and short, cash and synthetic instruments, active duration management, relative-value switches) to express each view and control its risk. Proprietary data tools deliver real-time market intelligence; every decision remains human-led.</p>
+                <div class="approach-pillars" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 18px 0 25px; max-width: 720px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.5px; color: var(--accent);">
+                    <span style="white-space: nowrap;">Diversified Concentration</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Deep Due Diligence</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Fundamental Value</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Catalyst-Oriented</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Active Duration</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Relative Value</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Instrument-Agnostic</span>
+                    <span style="color: var(--gold); font-weight: 300;">|</span>
+                    <span style="white-space: nowrap;">Moderate Leverage</span>
+                </div>
+                <a href="investment-approach.html" class="cs-btn" style="color: #111; margin-top: 10px;">
+                    <span>Explore our philosophy</span>
                     <span class="cs-btn-arrow" style="color: #111;">&#9654;</span>
                 </a>
-
             </div>
         </div>
     </div>
 
     <!-- Scrollytelling Section 2 (Image Right) -->
-    <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff; height: 350vh;">
+    <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff; height: 210vh;">
         <div class="text-column">
             <div class="step" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px;">
                 <h2>Our Flagship Strategy</h2>
-                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 500; max-width: 700px; text-align: left; line-height: 1.5;">Alba Credit Opportunities — A differentiated approach to global credit investing.</h3>
-                <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">Alba Credit Opportunities (ACO) is Alba Investment Partners’ flagship fund, designed to deliver superior risk-adjusted returns through an opportunistic and differentiated approach to liquid credit investing. Positioned between traditional long-only credit and opportunistic hedge fund strategies, ACO combines flexibility, selectivity, and active portfolio management to capture opportunities across market cycles.</p>
-                <a href="investment-approach.html" class="cs-btn fade-up" style="color: #111; margin-top: 30px;">
-                    <span>Learn About Investment Approach</span>
+                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.35rem; color: var(--accent); margin-bottom: 15px; font-weight: 500; max-width: 700px; text-align: left; line-height: 1.45;">Alba Credit Opportunities &mdash; A differentiated approach to global credit investing.</h3>
+                <p style="font-size: 1.15rem; line-height: 1.65; max-width: 700px; text-align: left; color: var(--text-secondary); margin: 0 0 20px 0;">Alba Investment Partners’ first launch and flagship strategy, ACO offers continuity and an alternative to traditional credit investing. The fund focuses on performing credit, seeking to generate alpha from market dislocations and their event-driven normalisation. It takes a high-conviction approach, combined with strong risk management expressed through neutral credit exposure.</p>
+                <a href="investment-approach.html" class="cs-btn fade-up" style="color: #111; margin-top: 15px;">
+                    <span>See the strategy in action</span>
                     <span class="cs-btn-arrow" style="color: #111;">&#9654;</span>
                 </a>
             </div>
@@ -1171,127 +1117,8 @@
             </div>
         </div>
     </div>
-    <!-- Case Studies Section (Kenslow Insights Style) -->
-    <!-- Insights Section (Kenslow 300vh Scroll Sequence) -->
+    <!-- Shared Button Style for Scrollytelling & Sections -->
     <style>
-        .insights-scroll-wrapper {
-            height: 400vh; /* scrollable duration - precisely 100vh per insight slide for fluid pacing */
-            position: relative;
-            z-index: 10;
-        }
-
-        .insights-sticky-container {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            background-color: #050a08;
-            color: #ffffff;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cs-bg-image {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-            transform: scale(1.05);
-            transition: opacity 0.5s ease, transform 3s ease;
-            opacity: 0;
-        }
-        
-        .cs-bg-image.active {
-            opacity: 1;
-            transform: scale(1.0);
-        }
-
-        /* Unique high-quality stock photography for each insight phase */
-        #bg-1 { 
-            background: url('alba credit.webp') center/cover;
-            filter: brightness(0.4); 
-        }
-        #bg-2 { 
-            background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba angle.webp') center 20%/120% no-repeat;
-            filter: brightness(0.7); 
-        }
-        #bg-3 { 
-            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop') center/cover;
-            filter: blur(3px) brightness(0.15); 
-        }
-
-        .cs-grid-lines {
-            position: absolute;
-            top: 0; left: 8%; width: 84%; height: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .cs-grid-line {
-            width: 1px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .cs-top-bar {
-            padding: 40px 8%;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            text-transform: uppercase;
-        }
-
-        .cs-middle {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            transform: translateY(-55%);
-            z-index: 5;
-            box-sizing: border-box;
-            padding: 0 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .cs-title-wrapper {
-            flex: 1.2;
-        }
-
-        .cs-title {
-            font-family: 'Aperto', "Georgia", serif;
-            font-size: clamp(3rem, 6vw, 6rem);
-            line-height: 1;
-            font-weight: 300;
-            margin: 0;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .cs-desc-wrapper {
-            flex: 1;
-            max-width: 450px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
-        }
-
-        .cs-desc {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-family: 'Inter', sans-serif;
-            /* Scroll JS loop natively handles opacity logic per frame now */
-        }
-
         .cs-btn {
             display: inline-flex;
             align-items: center;
@@ -1319,629 +1146,632 @@
             transform: translateX(5px);
         }
 
-        .cs-bottom-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 8% 60px;
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            z-index: 5;
-        }
-
-        .cs-col {
-            flex: 1;
-            position: relative;
-            padding-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .cs-col-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .cs-year {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .cs-name {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-align: right;
-            opacity: 0.9;
-        }
-
-        .cs-progress-bg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 1px;
-            width: 100%;
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .cs-progress-fill {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 1px;
-            width: 0%;
-            background-color: var(--gold);
-            will-change: width;
-            transform-origin: left;
-        }
-        
-        .cs-elements-visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        @media(max-width: 900px) {
-            .insights-scroll-wrapper { height: auto; }
-            .insights-sticky-container { position: relative; height: auto; padding: 80px 30px 60px; top: 0; display: block; }
-            .cs-top-bar { padding: 0; margin-bottom: 50px; }
-            .cs-middle { position: relative; top: 0; transform: none; padding: 0; flex-direction: column; align-items: flex-start; margin-bottom: 70px; gap: 30px; }
-            .cs-bottom-bar { position: relative; padding: 0; flex-direction: column; gap: 50px; }
-            .cs-grid-lines { display: none; }
-            .cs-desc-wrapper { margin-top: 20px; }
-            .cs-progress-bg { display: none; } /* On mobile, static rendering is better */
-            .cs-progress-fill { width: 100%; transition: width 1s ease; }
-        }
-    </style>
-
-    <div class="insights-scroll-wrapper" id="insights-sequence">
-        <section class="insights-sticky-container">
-            
-            <div class="cs-bg-image active" id="bg-1" style="background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba angle.webp') center 20%/120% no-repeat;"></div>
-            <div class="cs-bg-image" id="bg-2" style="background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba credit.webp') center/cover;"></div>
-            
-            
-            <div class="cs-grid-lines">
-                <div class="cs-grid-line"></div>
-                <div class="cs-grid-line"></div>
-                <div class="cs-grid-line"></div>
-                <div class="cs-grid-line"></div>
-                <div class="cs-grid-line"></div>
-            </div>
-
-            <div class="cs-top-bar">
-                <span>Insights</span>
-                <span>2026</span>
-            </div>
-
-            <div class="cs-middle">
-                <div class="cs-title-wrapper">
-                    <h2 class="cs-title">Insights</h2>
-                </div>
-                <div class="cs-desc-wrapper">
-                    <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
-                    
-                    <a href="aco-newsletter-subscription.html" class="cs-btn" id="insight-btn-link">
-                        <span id="insight-btn-text">Subscribe to the newsletter</span>
-                        <span class="cs-btn-arrow">&#9654;</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="cs-bottom-bar">
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">NEWSLETTER</span>
-                        <span class="cs-name">THE ALBA ANGLE</span>
-                    </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-1"></div>
-                </div>
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">NEWSLETTER</span>
-                        <span class="cs-name">ALBA CREDIT OPPORTUNITIES</span>
-                    </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-2"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const wrapper = document.getElementById('insights-sequence');
-            const csTitle = document.querySelector('.cs-title');
-            const csDescWrapper = document.querySelector('.cs-desc-wrapper');
-            const csCols = document.querySelectorAll('.cs-col');
-            const bgs = [document.getElementById('bg-1'), document.getElementById('bg-2')];
-            const progs = [document.getElementById('prog-1'), document.getElementById('prog-2')];
-            const descText = document.getElementById('insight-desc-text');
-            const btnLink = document.getElementById('insight-btn-link');
-            const links = ["alba-angle-subscription.html", "aco-newsletter-subscription.html"];
-
-            const descriptions = [
-                "A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team.",
-                "Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics."
-            ];
-
-            // Initial fade-up logic just for entry
-            const entryObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    if(csTitle) csTitle.classList.add('cs-elements-visible');
-                    if(csDescWrapper) csDescWrapper.classList.add('cs-elements-visible');
-                    csCols.forEach((col, idx) => {
-                        setTimeout(() => col.classList.add('cs-elements-visible'), 400 + (idx * 200)); 
-                    });
-                    entryObserver.disconnect();
-                }
-            }, { threshold: 0.1 });
-            if(wrapper) entryObserver.observe(wrapper);
-            
-            // Complex sticky scroll sequence
-            let currentPhase = 0;
-            
-            window.addEventListener('scroll', () => {
-                if(!wrapper || window.innerWidth <= 900) return; // Disable complex scroll on mobile, static logic kicks in
-
-                const rect = wrapper.getBoundingClientRect();
-                
-                // Only process if wrapper is scrolling through viewport
-                if(rect.top <= 0 && rect.bottom >= window.innerHeight/2) {
-                    
-                    // Total scrollable distance inside the wrapper
-                    const scrollableDistance = rect.height - window.innerHeight;
-                    const scrolled = Math.abs(rect.top);
-                    
-                    // Normalize scroll to 0.0 -> 3.0 (3 phases)
-                    const progress = Math.min(Math.max((scrolled / scrollableDistance) * 2, 0), 2);
-                    
-                    // Phase logic
-                    let activePhase = Math.floor(progress); // 0, 1, or 2
-                    let phaseProgress = progress % 1; // 0.0 to 1.0 within the phase
-                    
-                    // Fix bounds where progress exactly equals 3.0 preventing arbitrary resets
-                    if (progress >= 2) {
-                        activePhase = 1;
-                        phaseProgress = 1;
-                    }
-
-                    // Sync the text visibly perfectly mapped to the scroll progress frame execution
-                    if (descText) {
-                        descText.textContent = descriptions[activePhase];
-                        if (btnLink) btnLink.href = links[activePhase];
-                        
-                        let textAlpha = 1;
-                        let textY = 0;
-                        if (phaseProgress < 0.15 && activePhase > 0) {
-                            textAlpha = phaseProgress / 0.15; // Smooth fade-in natively on initial 15% phase entry
-                            textY = 10 * (1 - textAlpha); // Slide up subtly
-                        } else if (phaseProgress > 0.85 && activePhase < 1) {
-                            textAlpha = (1.0 - phaseProgress) / 0.15; // Smooth fade-out natively on final 15% phase exit
-                            textY = -10 * (1 - textAlpha);
-                        }
-                        descText.style.opacity = textAlpha;
-                        descText.style.transform = `translateY(${textY}px)`;
-                    }
-
-                    // If we shifted to a new phase physically, cross-fade background wrapper globally
-                    if (activePhase !== currentPhase) {
-                        currentPhase = activePhase;
-                        bgs.forEach((bg, idx) => {
-                            if(bg) bg.classList.toggle('active', idx === currentPhase);
-                        });
-                    }
-
-                    // Update the 3 golden progress lines dynamically
-                    progs.forEach((prog, idx) => {
-                        if(prog) {
-                            if (idx < activePhase) {
-                                prog.style.width = '100%'; // Previous lines completely filled
-                            } else if (idx === activePhase) {
-                                prog.style.width = `${Math.min(phaseProgress * 100, 100)}%`; // Current line filling
-                            } else {
-                                prog.style.width = '0%'; // Future lines empty
-                            }
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-
-
-
-    <!-- Modern Green Footer -->
-    <style>
-        /* Modern Green Footer */
-        .alba-footer {
-            background-color: #1a3622;
+        /* Home Newsletter & Factsheet CTA Section */
+        .home-cta-section {
+            background-color: #0b110e;
             color: #ffffff;
-            padding: 80px 10% 40px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 150px 8%;
             position: relative;
-            z-index: 20;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            scroll-snap-align: end; 
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
         }
-        
-        .footer-container {
-            max-width: 1400px;
+
+        .home-cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('team 2.webp');
+            background-size: cover;
+            background-position: center 30%;
+            filter: brightness(0.62) contrast(1.05);
+            transform: scale(1.02);
+            z-index: 1;
+        }
+
+        .home-cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(11, 17, 14, 0.72) 0%, rgba(11, 17, 14, 0.88) 100%);
+            z-index: 2;
+        }
+
+        .home-cta-inner {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
             margin: 0 auto;
-        }
-
-        .footer-top {
+            text-align: center;
             display: flex;
-            justify-content: space-between;
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-logo {
-            height: 65px;
-            margin-bottom: 25px;
-            object-fit: contain;
-            opacity: 0.9;
-        }
-
-        .footer-mission {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin: 0;
-            font-weight: 300;
-        }
-
-        .footer-links-grid {
-            display: flex;
-            gap: 80px;
-        }
-
-        .footer-column h4 {
-            color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 400;
-            margin-bottom: 25px;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
-        }
-
-        .footer-column a {
-            display: block;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            font-weight: 300;
-        }
-
-        .footer-column a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .copyright {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
-            margin: 0;
+        .home-cta-tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold, #cfa85f);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        .legal-links {
+        .home-cta-title {
+            font-family: 'Aperto', "Georgia", serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: #ffffff;
+            margin: 0 0 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .home-cta-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.65;
+            max-width: 660px;
+            margin: 0 0 45px;
+            font-weight: 300;
+        }
+
+        .home-cta-buttons {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
 
-        .legal-links a {
-            color: rgba(255, 255, 255, 0.4);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .legal-links a:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 900px) {
-            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
-            .footer-links-grid { flex-direction: column; gap: 40px; }
-            .alba-footer { padding: 60px 8% 30px; }
-            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
-        }
-    </style>
-
-    
-    <style>
-        /* Modern Elegant Footer CSS */
-        .alba-footer {
-            background-color: #112215;
-            color: #ffffff;
-            padding: 100px 10% 40px;
+        .home-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 32px;
             font-family: 'Inter', sans-serif;
-            position: relative;
-            z-index: 20;
-            border-top: 3px solid var(--gold);
-        }
-        
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 60px;
-            margin-bottom: 80px;
-            align-items: flex-start;
-        }
-
-        .footer-brand {
-            max-width: 350px;
-        }
-
-        .footer-logo {
-            height: 70px;
-            margin-bottom: 30px;
-            object-fit: contain;
-            opacity: 1;
-        }
-
-        .footer-mission {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin: 0;
-            font-weight: 300;
-        }
-
-        .footer-links-grid {
-            display: flex;
-            gap: 100px;
-        }
-
-        .footer-column h4 {
-            color: var(--gold);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 30px;
+            font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer-column a {
-            display: block;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
             text-decoration: none;
-            margin-bottom: 16px;
-            font-size: 0.95rem;
+            border-radius: 2px;
             transition: all 0.3s ease;
-            font-weight: 300;
+            cursor: pointer;
         }
 
-        .footer-column a:hover {
+        .home-action-btn.primary {
+            background-color: var(--gold, #cfa85f);
+            color: #0b110e;
+            border: 1px solid var(--gold, #cfa85f);
+        }
+
+        .home-action-btn.primary:hover {
+            background-color: #dfb86f;
+            border-color: #dfb86f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(207, 168, 95, 0.25);
+        }
+
+        .home-action-btn.secondary {
+            background-color: rgba(255, 255, 255, 0.05);
             color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .home-action-btn.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.85);
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .home-action-btn .btn-arrow {
+            font-size: 1.1rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .home-action-btn:hover .btn-arrow {
             transform: translateX(4px);
         }
 
+        @media (max-width: 900px) {
+            .home-cta-section {
+                padding: 100px 6%;
+            }
+            .home-cta-bg {
+                background-position: center center;
+            }
+            .home-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            .home-action-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 0.78rem;
+                letter-spacing: 1.5px;
+            }
+        }
+    </style>
+
+    <section class="home-cta-section">
+        <div class="home-cta-bg"></div>
+        <div class="home-cta-overlay"></div>
+        <div class="home-cta-inner">
+            <span class="home-cta-tag">Insights &amp; Publications</span>
+            <h2 class="home-cta-title">Stay informed on our credit strategies and macro perspective.</h2>
+            <p class="home-cta-desc">Follow our market commentary with The Alba Angle, or request official fund documentation and performance factsheets for Alba Credit Opportunities.</p>
+            <div class="home-cta-buttons">
+                <a href="alba-angle-subscription.html" class="home-action-btn primary">
+                    <span>Subscribe to our Alba Angle newsletter</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </a>
+                <a href="aco-newsletter-subscription.html" class="home-action-btn secondary">
+                    <span>Receive the factsheet</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Master Footer -->
+    <style>
+        .alba-footer {
+            background: linear-gradient(180deg, #0e2018 0%, #07120e 100%);
+            color: #ffffff;
+            position: relative;
+            z-index: 20;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 100px 8% 45px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Ambient Emerald & Gold Radial Glow */
+        .footer-ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 860px;
+            height: 380px;
+            background: radial-gradient(ellipse at top, rgba(207, 168, 95, 0.16) 0%, rgba(30, 54, 45, 0.35) 45%, transparent 75%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Luminous Gold Expanding Hairline */
+        .footer-hairline {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, transparent 0%, rgba(207, 168, 95, 0.25) 20%, #cfa85f 50%, rgba(207, 168, 95, 0.25) 80%, transparent 100%);
+            box-shadow: 0 0 16px rgba(207, 168, 95, 0.65);
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Background Monogram Watermark */
+        .footer-watermark {
+            position: absolute;
+            right: -4%;
+            bottom: -15%;
+            width: 520px;
+            height: auto;
+            opacity: 0;
+            pointer-events: none;
+            filter: brightness(2) contrast(1.2);
+            transition: opacity 1.8s ease, transform 1.8s ease;
+            transform: translateY(30px);
+        }
+
+        .footer-main {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Multi-column Directory Grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.15fr 1.3fr 1.2fr;
+            gap: 50px 45px;
+            margin-bottom: 70px;
+        }
+
+        /* Staggered Scroll Elevation */
+        .footer-col {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-col-1 { transition-delay: 0.10s; }
+        .footer-col-2 { transition-delay: 0.22s; }
+        .footer-col-3 { transition-delay: 0.34s; }
+        .footer-col-4 { transition-delay: 0.46s; }
+
         .footer-bottom {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
+        }
+
+        /* Triggered in-view animation state */
+        .alba-footer.footer-revealed .footer-ambient-glow {
+            opacity: 1;
+        }
+        .alba-footer.footer-revealed .footer-hairline {
+            width: 100%;
+        }
+        .alba-footer.footer-revealed .footer-watermark {
+            opacity: 0.035;
+            transform: translateY(0);
+        }
+        .alba-footer.footer-revealed .footer-col,
+        .alba-footer.footer-revealed .footer-bottom {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Column 1: Brand details */
+        .footer-brand-logo {
+            height: 46px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 22px;
+            display: inline-block;
+        }
+
+        .footer-brand-desc {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0 0 24px;
+            max-width: 330px;
+            font-weight: 300;
+        }
+
+        .footer-finma-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(207, 168, 95, 0.08);
+            border: 1px solid rgba(207, 168, 95, 0.25);
+            border-radius: 2px;
+            color: var(--gold, #cfa85f);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 500;
+        }
+
+        .footer-finma-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--gold, #cfa85f);
+            box-shadow: 0 0 8px var(--gold, #cfa85f);
+        }
+
+        /* Directory Headings */
+        .footer-col-title {
+            color: var(--gold, #cfa85f);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin: 0 0 24px;
+        }
+
+        /* Directory Links */
+        .footer-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-nav-link {
+            color: rgba(255, 255, 255, 0.68);
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer-nav-link::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--gold, #cfa85f);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav-link:hover {
+            color: #ffffff;
+            transform: translateX(12px);
+        }
+
+        .footer-nav-link:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Address block */
+        .footer-address {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            font-style: normal;
+            margin: 0 0 22px;
+        }
+
+        .footer-hq-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold, #cfa85f);
+            text-decoration: none;
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 500;
+            transition: gap 0.3s ease, color 0.3s ease;
+        }
+
+        .footer-hq-cta:hover {
+            color: #ffffff;
+            gap: 12px;
+        }
+
+        /* Divider & Bottom bar */
+        .footer-bottom-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 15%, rgba(255, 255, 255, 0.1) 85%, transparent 100%);
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 22px;
         }
 
-        .copyright {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.8rem;
             margin: 0;
+            letter-spacing: 0.3px;
         }
 
-        .legal-links {
+        .footer-legal-links {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        .legal-links a {
-            color: rgba(255, 255, 255, 0.4);
+        .footer-legal-links a,
+        .footer-legal-links button.footer-link-btn {
+            color: rgba(255, 255, 255, 0.68);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        .legal-links a:hover {
-            color: var(--gold);
+        .footer-legal-links a:hover,
+        .footer-legal-links button.footer-link-btn:hover {
+            color: var(--gold, #cfa85f);
         }
 
-        @media (max-width: 900px) {
-            .footer-top { flex-direction: column; gap: 50px; margin-bottom: 50px; }
-            .footer-links-grid { flex-direction: column; gap: 40px; }
-            .alba-footer { padding: 80px 8% 40px; }
-            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
-            .legal-links { flex-direction: column; gap: 15px; }
+        .footer-sep {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.85rem;
+            user-select: none;
+        }
+
+        .footer-disclaimer-box {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        .footer-disclaimer {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 0.72rem;
+            line-height: 1.65;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 0.2px;
+            text-align: left;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px 30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .alba-footer {
+                padding: 70px 6% 35px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .footer-legal-links {
+                gap: 12px;
+            }
         }
     </style>
 
     <footer class="alba-footer">
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba is an independent investment management boutique dedicated to providing superior risk-adjusted returns in fixed income and credit.</p>
+        <div class="footer-hairline"></div>
+        <div class="footer-ambient-glow"></div>
+        <img src="logos/light.png" alt="" class="footer-watermark" aria-hidden="true">
+
+        <div class="footer-main">
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Regulatory Status -->
+                <div class="footer-col footer-col-1">
+                    <a href="index.html" style="text-decoration: none;">
+                        <img src="logos/light.png" alt="Alba Investment Partners" class="footer-brand-logo">
+                    </a>
+                    <p class="footer-brand-desc">
+                        A Geneva-based independent credit boutique, authorised by FINMA as a Manager of Collective Assets. Dedicated to delivering superior risk-adjusted returns.
+                    </p>
+                    <div class="footer-finma-badge">
+                        Authorised by FINMA
+                    </div>
                 </div>
-                
-                <div class="footer-links-grid">
-                    <div class="footer-column">
-                        <h4>Firm</h4>
-                        <a href="index.html">Home</a>
-                        <a href="about.html">About Us</a>
-                        <a href="our-people.html">Our People</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Strategies</h4>
-                        <a href="investment-approach.html">Investment Approach</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Insights</h4>
-                        <a href="insights.html">News &amp; Insights</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <a href="contact.html">Contact Us</a>
-                        <a href="#">LinkedIn</a>
-                    </div>
+
+                <!-- Column 2: The Firm Directory -->
+                <div class="footer-col footer-col-2">
+                    <h4 class="footer-col-title">The Firm</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html" class="footer-nav-link">Home</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About Us</a></li>
+                        <li><a href="investment-approach.html" class="footer-nav-link">Investment Approach</a></li>
+                        <li><a href="our-people.html" class="footer-nav-link">Our People</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Strategies & Insights Directory -->
+                <div class="footer-col footer-col-3">
+                    <h4 class="footer-col-title">Strategies &amp; Insights</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="aco-newsletter-subscription.html" class="footer-nav-link">Alba Credit Opportunities</a></li>
+                        <li><a href="alba-angle-subscription.html" class="footer-nav-link">The Alba Angle</a></li>
+                        <li><a href="insights.html" class="footer-nav-link">Insights &amp; Research</a></li>
+                        <li><a href="contact.html?subject=Data%20Room%20Access" class="footer-nav-link">Institutional Data Room</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Geneva Headquarters -->
+                <div class="footer-col footer-col-4">
+                    <h4 class="footer-col-title">Geneva Office</h4>
+                    <address class="footer-address">
+                        Alba Investment Partners SA<br>
+                        Rue du Perron 1<br>
+                        1204 Geneva, Switzerland
+                    </address>
+                    <a href="contact.html" class="footer-hq-cta">
+                        <span>Get in touch</span>
+                        <span>&rarr;</span>
+                    </a>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
-                <div class="legal-links">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-of-use.html">Terms of Use</a>
+                <div class="footer-bottom-divider"></div>
+                <div class="footer-bottom-row">
+                    <p class="footer-copyright">&copy; 2026 Alba Investment Partners SA. All rights reserved.</p>
+                    <div class="footer-legal-links">
+                        <a href="terms-of-use.html">Legal Notice</a>
+                        <span class="footer-sep">&middot;</span>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <span class="footer-sep">&middot;</span>
+                        <a href="javascript:void(0)" class="cookie-trigger-btn">Cookies</a>
+                        <span class="footer-sep">&middot;</span>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-disclaimer-box">
+                    <p class="footer-disclaimer">
+                        Alba Investment Partners SA is authorised and regulated by FINMA as a Manager of Collective Assets; Alba Credit Opportunities, a sub-fund of Alba Investment Partners ICAV, is authorised by the Central Bank of Ireland.
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Footer Scroll Reveal Effect
+        (function() {
+            function initFooterReveal() {
+                const footerEl = document.querySelector('.alba-footer');
+                if (!footerEl) return;
+
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                footerEl.classList.add('footer-revealed');
+                            }
+                        });
+                    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+                    observer.observe(footerEl);
+                } else {
+                    footerEl.classList.add('footer-revealed');
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFooterReveal);
+            } else {
+                initFooterReveal();
+            }
+        })();
+    </script>
+
 
 
 
     <script>
-        /* --- CANVAS SCROLLYTELLING DISABLED (Replaced with static images) ---
-        const bridgeFrameCount = 192;
-        const lighthouseFrameCount = 192;
-        const currentBridgeFrame = index => `new%20bridge/${index.toString().padStart(5, '0')}.png`;
-        const currentLighthouseFrame = index => `lighthouse/${index.toString().padStart(5, '0')}.png`;
-
-        const bridgeImages = [];
-        const lighthouseImages = [];
-
-        // Setup both canvases
-        const canvas1 = document.getElementById('bridge-canvas-1');
-        const ctx1 = canvas1.getContext('2d');
-        const scroll1 = document.getElementById('scroll-section-1');
-
-        const canvas2 = document.getElementById('bridge-canvas-2');
-        const ctx2 = canvas2.getContext('2d');
-        const scroll2 = document.getElementById('scroll-section-2');
-
-        // Load Bridge First Image
-        const firstBridge = new Image();
-        firstBridge.src = currentBridgeFrame(1);
-        firstBridge.onload = () => {
-            canvas1.width = firstBridge.naturalWidth;
-            canvas1.height = firstBridge.naturalHeight;
-            ctx1.drawImage(firstBridge, 0, 0);
-        };
-        bridgeImages[1] = firstBridge;
-
-        // Load Lighthouse First Image
-        const firstLighthouse = new Image();
-        firstLighthouse.src = currentLighthouseFrame(1);
-        firstLighthouse.onload = () => {
-            canvas2.width = firstLighthouse.naturalWidth;
-            canvas2.height = firstLighthouse.naturalHeight;
-            ctx2.drawImage(firstLighthouse, 0, 0);
-        };
-        lighthouseImages[1] = firstLighthouse;
-
-        // Preload rest of images
-        for (let i = 2; i <= bridgeFrameCount; i++) {
-            const img = new Image();
-            img.src = currentBridgeFrame(i);
-            bridgeImages[i] = img;
-        }
-        for (let i = 2; i <= lighthouseFrameCount; i++) {
-            const img = new Image();
-            img.src = currentLighthouseFrame(i);
-            lighthouseImages[i] = img;
-        }
-
-        function handleCanvasScroll(scrollElem, canvasElem, ctx, imgArray, fCount) {
-            if (!scrollElem || !canvasElem || !ctx) return;
-            if (window.innerWidth <= 900) return; // Disabled on mobile to favor auto-playing GIF mode
-            const sectionTop = scrollElem.offsetTop;
-            const scrollableDistance = scrollElem.scrollHeight - window.innerHeight;
-            let fraction = (window.scrollY - sectionTop) / scrollableDistance;
-            fraction = Math.max(0, Math.min(1, fraction));
-            const frameIndex = Math.min(fCount, Math.max(1, Math.ceil(fraction * fCount)));
-            
-            requestAnimationFrame(() => {
-                if (imgArray[frameIndex] && imgArray[frameIndex].complete) {
-                    ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
-                    ctx.drawImage(imgArray[frameIndex], 0, 0);
-                }
-            });
-        }
-
-        function playAsGifOnMobile(canvasElem, ctx, imgArray, fCount) {
-            let currentFrame = 1;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && window.innerWidth <= 900) {
-                        // Automatically play sequence once like a non-looping GIF
-                        const interval = setInterval(() => {
-                            if (currentFrame > fCount) {
-                                clearInterval(interval);
-                                return;
-                            }
-                            if (imgArray[currentFrame] && imgArray[currentFrame].complete) {
-                                ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
-                                ctx.drawImage(imgArray[currentFrame], 0, 0);
-                                currentFrame += 2; // Faster sequential playback for mobile
-                            }
-                        }, 50); // ~20fps + skipping frames feels like 40fps snappy loader
-                        observer.unobserve(canvasElem); 
-                    }
-                });
-            }, { threshold: 0.25 });
-            observer.observe(canvasElem);
-        }
-
-        playAsGifOnMobile(canvas1, ctx1, bridgeImages, bridgeFrameCount);
-        playAsGifOnMobile(canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
-
-
-        window.addEventListener('scroll', () => {
-            handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
-            handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
-        });
-        */
-
         // Hero animation logic
         const heroSection = document.getElementById('hero-section');
         const heroInitial = document.getElementById('hero-initial');
-        
-        const animatedElements = [
-            document.querySelector('.founder-img-placeholder'),
-            document.querySelector('.intro-text'),
-            ...document.querySelectorAll('.hero-stat')
-        ];
+        const founderImg = document.querySelector('.founder-img-placeholder');
+        const phase1Text = document.querySelector('.hero-text-phase1');
+        const phase2Text = document.querySelector('.hero-text-phase2');
+        const heroCta = document.querySelector('.hero-cta-wrapper');
 
         function interpolate(progress, start, end, startVal, endVal) {
             if (progress <= start) return startVal;
@@ -1950,7 +1780,7 @@
         }
 
         window.addEventListener('scroll', () => {
-            
+            if (!heroSection) return;
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
             let progress = -heroRect.top / Math.max(1, scrollDistance);
@@ -1960,40 +1790,81 @@
             
             // Execute the precise layout math pushing the h1 explicitly out of the way
             const targetY = isMobile ? -5 : -32; 
-            const initialY = interpolate(progress, 0, 0.4, 0, targetY); 
+            const initialY = interpolate(progress, 0, 0.35, 0, targetY); 
             
-            // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
-            const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
+            // Exit crossfade for the massive title at the very end of the hero sequence
+            const exitTitleOp = interpolate(progress, 0.82, 0.95, 1, 0);
             
             // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
-            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp; 
+            const initialOp = isMobile ? interpolate(progress, 0, 0.20, 1, 0) : exitTitleOp; 
             
-            heroInitial.style.transform = `translateY(${initialY}vh)`;
-            heroInitial.style.opacity = initialOp;
+            if (heroInitial) {
+                heroInitial.style.transform = `translateY(${initialY}vh)`;
+                heroInitial.style.opacity = initialOp;
+            }
 
-            // Animate secondary elements progressively + Kenslow exit styling
-            animatedElements.forEach((el, index) => {
-                if (!el) return;
-                const startP = 0.15 + (index * 0.12); 
-                const endP = startP + 0.25;
+            // Animate Founder image
+            if (founderImg) {
+                let imgOp = interpolate(progress, 0.15, 0.32, 0, 1);
+                let imgY = interpolate(progress, 0.15, 0.32, 40, 0);
+                let imgScale = 1;
                 
-                let elemOpacity = interpolate(progress, startP, endP, 0, 1);
-                const elemY = interpolate(progress, startP, endP, 40, 0);
-                let elemScale = 1;
-                
-                // Apply the Kenslow-style unified exit mechanism
-                if (progress > 0.7) {
-                    elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
-                    
-                    // Specifically target the founder image to actively shrink natively
-                    if (el.classList.contains('founder-img-placeholder')) {
-                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85); 
-                    }
+                if (progress > 0.82) {
+                    imgOp = interpolate(progress, 0.82, 0.95, 1, 0);
+                    imgScale = interpolate(progress, 0.82, 0.95, 1, 0.85);
                 }
                 
-                el.style.opacity = elemOpacity;
-                el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
-            });
+                founderImg.style.opacity = imgOp;
+                founderImg.style.transform = `translateY(${imgY}px) scale(${imgScale})`;
+            }
+
+            // Text Phase 1 & Phase 2 transitions:
+            // Phase 1 appears from 0.18 -> 0.32, holds until 0.48, then transitions into Phase 2
+            if (phase1Text) {
+                let p1Op = 0;
+                let p1Y = 30;
+                if (progress <= 0.48) {
+                    p1Op = interpolate(progress, 0.18, 0.32, 0, 1);
+                    p1Y = interpolate(progress, 0.18, 0.32, 30, 0);
+                } else {
+                    p1Op = interpolate(progress, 0.48, 0.58, 1, 0);
+                    p1Y = interpolate(progress, 0.48, 0.58, 0, -20);
+                }
+                phase1Text.style.opacity = p1Op;
+                phase1Text.style.transform = `translateY(${p1Y}px)`;
+                phase1Text.style.pointerEvents = (p1Op > 0.5) ? 'auto' : 'none';
+            }
+
+            // Phase 2 appears from 0.52 -> 0.62, holds until 0.82, then fades out on exit
+            if (phase2Text) {
+                let p2Op = 0;
+                let p2Y = 20;
+                if (progress < 0.52) {
+                    p2Op = 0;
+                    p2Y = 20;
+                } else if (progress <= 0.82) {
+                    p2Op = interpolate(progress, 0.52, 0.62, 0, 1);
+                    p2Y = interpolate(progress, 0.52, 0.62, 20, 0);
+                } else {
+                    p2Op = interpolate(progress, 0.82, 0.95, 1, 0);
+                    p2Y = 0;
+                }
+                phase2Text.style.opacity = p2Op;
+                phase2Text.style.transform = `translateY(${p2Y}px)`;
+                phase2Text.style.pointerEvents = (p2Op > 0.5) ? 'auto' : 'none';
+            }
+
+            // Animate CTA Button
+            if (heroCta) {
+                let ctaOp = interpolate(progress, 0.20, 0.35, 0, 1);
+                let ctaY = interpolate(progress, 0.20, 0.35, 30, 0);
+                if (progress > 0.82) {
+                    ctaOp = interpolate(progress, 0.82, 0.95, 1, 0);
+                }
+                heroCta.style.opacity = ctaOp;
+                heroCta.style.transform = `translateY(${ctaY}px)`;
+                heroCta.style.pointerEvents = (ctaOp > 0.1) ? 'auto' : 'none';
+            }
 
             // Update the scroll progress bar
             const heroProgressFill = document.getElementById('hero-progress');
@@ -2001,75 +1872,11 @@
                 heroProgressFill.style.width = `${progress * 100}%`;
             }
 
-            // Scrollytelling sketch reveal images
-            const scrollSections = [
-                { wrapper: document.getElementById('scroll-section-1'), img: document.querySelector('#scroll-section-1 .watercolor-reveal') },
-                { wrapper: document.getElementById('scroll-section-2'), img: document.querySelector('#scroll-section-2 .watercolor-reveal') }
-            ];
 
-            scrollSections.forEach(sec => {
-                if(!sec.wrapper || !sec.img) return;
-                const rect = sec.wrapper.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                // Start revealing just as it reaches the top, and finish over a long scroll
-                const startReveal = windowHeight * 0.25;
-                const endReveal = -windowHeight * 0.75;
-                
-                let p = 0;
-                if (rect.top <= startReveal) {
-                    p = (startReveal - rect.top) / (startReveal - endReveal);
-                }
-                p = Math.max(0, Math.min(1, p));
-                sec.img.style.setProperty('--p', p);
-            });
         });
+        window.dispatchEvent(new Event('scroll'));
 
-        // Setup Mission text scrub
-        const missionTextElem = document.getElementById('mission-text');
-        if (missionTextElem) {
-            const words = missionTextElem.innerText.split(' ');
-            missionTextElem.innerHTML = '';
-            words.forEach(word => {
-                const span = document.createElement('span');
-                span.className = 'mission-word';
-                span.innerText = word + ' ';
-                missionTextElem.appendChild(span);
-            });
-        }
 
-        window.addEventListener('scroll', () => {
-            const missionSection = document.getElementById('mission-scroll-section');
-            if (missionSection && missionTextElem) {
-                const rect = missionSection.getBoundingClientRect();
-                const scrollable = missionSection.offsetHeight - window.innerHeight;
-                let progress = -rect.top / Math.max(1, scrollable);
-                
-                // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
-                let fillProgress = (progress - 0.1) / 0.8;
-                fillProgress = Math.max(0, Math.min(1, fillProgress));
-                
-                const spans = missionTextElem.querySelectorAll('.mission-word');
-                const revealCount = Math.floor(fillProgress * spans.length);
-                
-                spans.forEach((span, i) => {
-                    if (i < revealCount) {
-                        span.classList.add('active');
-                    } else {
-                        span.classList.remove('active');
-                    }
-                });
-
-                // Apply graceful upwards scroll to text as section is scrubbed
-                const clampedProgress = Math.max(0, Math.min(1, progress));
-                if (window.innerWidth > 900) {
-                    const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
-                    missionTextElem.style.transform = `translateY(${textY}px)`;
-                } else {
-                    missionTextElem.style.transform = 'none'; // Prevent text overlapping the H2 label on mobile viewports
-                }
-            }
-        });
 
         // Built on Principles - Arc Section Logic
         const arcSection = document.getElementById('arc-section');
@@ -2366,7 +2173,7 @@
         <div class="alba-cookie-buttons">
             <button class="alba-cookie-btn accept" id="cookie-accept">Accept Cookies</button>
             <button class="alba-cookie-btn reject" id="cookie-reject">Reject</button>
-            <a href="#" class="alba-cookie-link">Privacy Policy</a>
+            <a href="privacy-policy.html" class="alba-cookie-link">Privacy Policy</a>
         </div>
     </div>
 
@@ -2402,6 +2209,17 @@
                 hideBanner();
             });
         }
+
+        document.querySelectorAll('.cookie-trigger-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (banner) {
+                    banner.style.display = 'block';
+                    void banner.offsetWidth;
+                    banner.classList.add('show');
+                }
+            });
+        });
     });
     </script>
 
@@ -2422,75 +2240,184 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const frameCount = 120;
-        const jetDeauFrames = [];
-        const cathedralFrames = [];
-        
-        // Preload first frames immediately
-        const imgJet0 = new Image();
-        imgJet0.src = `jet deau/ezgif-frame-001.jpg`;
-        jetDeauFrames.push(imgJet0);
-        
-        const imgCath0 = new Image();
-        imgCath0.src = `cathedral/ezgif-frame-001.jpg`;
-        cathedralFrames.push(imgCath0);
+        const jetFrames = new Array(frameCount);
+        const cathFrames = new Array(frameCount);
+        const jetLoaded = new Array(frameCount).fill(false);
+        const cathLoaded = new Array(frameCount).fill(false);
 
         const canvasJet = document.getElementById('jet-deau-canvas');
-        const ctxJet = canvasJet ? canvasJet.getContext('2d') : null;
-        
+        const ctxJet = canvasJet ? canvasJet.getContext('2d', { alpha: false }) : null;
+
         const canvasCath = document.getElementById('cathedral-canvas');
-        const ctxCath = canvasCath ? canvasCath.getContext('2d') : null;
+        const ctxCath = canvasCath ? canvasCath.getContext('2d', { alpha: false }) : null;
 
         if (ctxJet) {
-            imgJet0.onload = () => ctxJet.drawImage(imgJet0, 0, 0, 1920, 1080);
+            ctxJet.imageSmoothingEnabled = true;
+            ctxJet.imageSmoothingQuality = 'high';
         }
         if (ctxCath) {
-            imgCath0.onload = () => ctxCath.drawImage(imgCath0, 0, 0, 1920, 1080);
+            ctxCath.imageSmoothingEnabled = true;
+            ctxCath.imageSmoothingQuality = 'high';
         }
 
-        // Defer loading the rest of the 238 frames until the page is fully loaded
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                for (let i = 2; i <= frameCount; i++) {
-                    const frameNumber = i.toString().padStart(3, '0');
-                    const imgJ = new Image();
-                    imgJ.src = `jet deau/ezgif-frame-${frameNumber}.jpg`;
-                    jetDeauFrames.push(imgJ);
-                    
-                    const imgC = new Image();
-                    imgC.src = `cathedral/ezgif-frame-${frameNumber}.jpg`;
-                    cathedralFrames.push(imgC);
-                }
-            }, 1000);
+        let lastDrawnJetFrame = -1;
+        let lastDrawnCathFrame = -1;
+
+        // Optimized image loader with background decoding
+        function loadFrame(type, i, onReady) {
+            const isJet = type === 'jet';
+            const arr = isJet ? jetFrames : cathFrames;
+            const loadedArr = isJet ? jetLoaded : cathLoaded;
+            if (arr[i]) return;
+
+            const img = new Image();
+            arr[i] = img;
+            const frameNum = (i + 1).toString().padStart(3, '0');
+            const folder = isJet ? 'jet%20deau' : 'cathedral';
+            img.src = `${folder}/ezgif-frame-${frameNum}.jpg`;
+
+            const onLoaded = () => {
+                loadedArr[i] = true;
+                if (onReady) onReady(img);
+            };
+
+            if (img.decode) {
+                img.decode().then(onLoaded).catch(onLoaded);
+            } else if (img.complete) {
+                onLoaded();
+            } else {
+                img.onload = onLoaded;
+                img.onerror = onLoaded;
+            }
+        }
+
+        // Returns target frame or nearest loaded frame so the animation never hitches
+        function getBestFrame(type, targetIdx) {
+            const isJet = type === 'jet';
+            const arr = isJet ? jetFrames : cathFrames;
+            const loadedArr = isJet ? jetLoaded : cathLoaded;
+
+            const isReady = (idx) => loadedArr[idx] || (arr[idx] && arr[idx].complete && arr[idx].naturalWidth > 0);
+
+            if (isReady(targetIdx) && arr[targetIdx]) {
+                return arr[targetIdx];
+            }
+
+            for (let offset = 1; offset < frameCount; offset++) {
+                const prev = targetIdx - offset;
+                if (prev >= 0 && isReady(prev) && arr[prev]) return arr[prev];
+                const next = targetIdx + offset;
+                if (next < frameCount && isReady(next) && arr[next]) return arr[next];
+            }
+            return arr[0] || null;
+        }
+
+        // 1. Immediately load & render Frame 1 (Instant First Paint)
+        loadFrame('jet', 0, (img) => {
+            if (ctxJet && lastDrawnJetFrame === -1) {
+                ctxJet.drawImage(img, 0, 0, 1920, 1080);
+                lastDrawnJetFrame = 0;
+            }
         });
+        loadFrame('cath', 0, (img) => {
+            if (ctxCath && lastDrawnCathFrame === -1) {
+                ctxCath.drawImage(img, 0, 0, 1920, 1080);
+                lastDrawnCathFrame = 0;
+            }
+        });
+
+        // 2. High-speed Stride Loading: Jet d'Eau is Section 1 (load every 2nd keyframe = 60 keyframes ready in ~150ms)
+        for (let i = 2; i < frameCount; i += 2) {
+            loadFrame('jet', i);
+        }
+        for (let i = 3; i < frameCount; i += 3) {
+            loadFrame('cath', i);
+        }
+
+        // 3. Promptly backfill remaining frames for full 60fps watercolor definition
+        setTimeout(() => {
+            for (let i = 1; i < frameCount; i += 2) {
+                loadFrame('jet', i);
+            }
+            for (let i = 1; i < frameCount; i++) {
+                if (i % 3 !== 0) loadFrame('cath', i);
+            }
+        }, 30);
 
         const sectionJet = document.getElementById('scroll-section-1');
         const sectionCath = document.getElementById('scroll-section-2');
 
-        function updateCanvasOnScroll() {
+        let currentJetProgress = 0;
+        let targetJetProgress = 0;
+        let currentCathProgress = 0;
+        let targetCathProgress = 0;
+
+        // Smooth physics-damped animation loop (LERP)
+        function updateCanvases() {
+            // Section 1: Our Approach (Jet d'Eau)
             if (sectionJet && ctxJet) {
-                const rectJet = sectionJet.getBoundingClientRect();
-                let progressJet = -rectJet.top / (rectJet.height - window.innerHeight);
-                progressJet = Math.max(0, Math.min(1, progressJet));
-                const frameIndexJet = Math.floor(progressJet * (frameCount - 1));
-                if (jetDeauFrames[frameIndexJet] && jetDeauFrames[frameIndexJet].complete) {
-                    ctxJet.drawImage(jetDeauFrames[frameIndexJet], 0, 0, 1920, 1080);
+                const rect = sectionJet.getBoundingClientRect();
+                const isVisible = rect.bottom >= 0 && rect.top <= window.innerHeight;
+                if (isVisible) {
+                    const scrollable = rect.height - window.innerHeight;
+                    if (scrollable > 0) {
+                        // Watercolor starts painting promptly and completes gracefully by 70% of scroll
+                        const rawP = -rect.top / (scrollable * 0.70);
+                        targetJetProgress = Math.max(0, Math.min(1, rawP));
+                    }
+                }
+
+                // Fluid momentum damping: 0.28 gives immediate snappy response with silky-smooth frame transitions
+                const diffJet = targetJetProgress - currentJetProgress;
+                if (Math.abs(diffJet) > 0.0005) {
+                    currentJetProgress += diffJet * 0.28;
+                } else {
+                    currentJetProgress = targetJetProgress;
+                }
+
+                const targetIdxJet = Math.min(frameCount - 1, Math.max(0, Math.round(currentJetProgress * (frameCount - 1))));
+                if (targetIdxJet !== lastDrawnJetFrame || lastDrawnJetFrame === -1) {
+                    const frameImg = getBestFrame('jet', targetIdxJet);
+                    if (frameImg && (frameImg.complete || jetLoaded[targetIdxJet])) {
+                        ctxJet.drawImage(frameImg, 0, 0, 1920, 1080);
+                        lastDrawnJetFrame = targetIdxJet;
+                    }
                 }
             }
 
+            // Section 2: Our Strategy (Cathedral)
             if (sectionCath && ctxCath) {
-                const rectCath = sectionCath.getBoundingClientRect();
-                let progressCath = -rectCath.top / (rectCath.height - window.innerHeight);
-                progressCath = Math.max(0, Math.min(1, progressCath));
-                const frameIndexCath = Math.floor(progressCath * (frameCount - 1));
-                if (cathedralFrames[frameIndexCath] && cathedralFrames[frameIndexCath].complete) {
-                    ctxCath.drawImage(cathedralFrames[frameIndexCath], 0, 0, 1920, 1080);
+                const rect = sectionCath.getBoundingClientRect();
+                const isVisible = rect.bottom >= 0 && rect.top <= window.innerHeight;
+                if (isVisible) {
+                    const scrollable = rect.height - window.innerHeight;
+                    if (scrollable > 0) {
+                        const rawP = -rect.top / (scrollable * 0.70);
+                        targetCathProgress = Math.max(0, Math.min(1, rawP));
+                    }
+                }
+
+                const diffCath = targetCathProgress - currentCathProgress;
+                if (Math.abs(diffCath) > 0.0005) {
+                    currentCathProgress += diffCath * 0.28;
+                } else {
+                    currentCathProgress = targetCathProgress;
+                }
+
+                const targetIdxCath = Math.min(frameCount - 1, Math.max(0, Math.round(currentCathProgress * (frameCount - 1))));
+                if (targetIdxCath !== lastDrawnCathFrame || lastDrawnCathFrame === -1) {
+                    const frameImg = getBestFrame('cath', targetIdxCath);
+                    if (frameImg && (frameImg.complete || cathLoaded[targetIdxCath])) {
+                        ctxCath.drawImage(frameImg, 0, 0, 1920, 1080);
+                        lastDrawnCathFrame = targetIdxCath;
+                    }
                 }
             }
 
-            requestAnimationFrame(updateCanvasOnScroll);
+            requestAnimationFrame(updateCanvases);
         }
-        
-        requestAnimationFrame(updateCanvasOnScroll);
+
+        requestAnimationFrame(updateCanvases);
     });
     </script>
 </body>
