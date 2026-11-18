@@ -24,3 +24,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Raw camera originals & diagnostic previews
+new_team_originals/
+previews/
